@@ -1,0 +1,18 @@
+<% extend 'layout' %>
+
+<div ng-controller="MainCtrl" class="pure-form">
+  <form ng-submit="onSubmit($event)" class="createTodoForm">
+    <input type="text" ng-model="text">
+    <input type="submit" value="Add Todo" class="pure-button pure-button-primary">
+  </form>
+
+  <ul class="todoList">
+    <li ng-repeat="todo in todoList" ng-class="{'is-completed':todo.completed}">
+      <label>
+        <input type="checkbox" class="todoList-checkbox" ng-model="todo.completed" ng-change="onChange(todo)">
+        <span class="todoList-text">{{todo.text}}</span>
+      </label>
+      <span class="todoList-remove" ng-click="onClickRemove(todo)">✖</span>
+    </li>
+  </ul>
+</div>

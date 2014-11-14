@@ -1,0 +1,118 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #F2F2F2;
+}
+
+.header {
+  display: block;
+  background: #5eb95e;
+  padding: 10px;
+}
+
+.header-inner {
+  width: 500px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.header-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+  color: #FFF;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+.header-signout {
+  position: absolute;
+  right: 0;
+  top: 10px;
+  color: #FFF;
+}
+
+.header-signout a {
+  color: #FFF;
+}
+
+.header-signout a:hover {
+  color: #C00;
+}
+
+.main {
+  display: block;
+  width: 500px;
+  margin: 30px auto 0;
+}
+
+.loginForm-row {
+  margin: 15px 0;
+}
+
+.loginForm-row label {
+  display: inline-block;
+  width: 5.2em;
+}
+
+.loginForm-row input {
+  width: 360px;
+}
+
+.loginForm-action {
+  margin-top: 30px;
+}
+
+.message {
+  position: relative;
+  margin-bottom: 1em;
+  padding: 1em;
+  background: #ccc;
+  border-radius: 3px;
+  background-color: #D13C38;
+  color: #fff;
+}
+
+.createTodoForm input[type="text"] {
+  width: 360px;
+}
+
+.todoList {
+  margin: 30px 0 0 0;
+  padding: 0;
+  list-style: none;
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
+  background-color: #FFF;
+}
+
+.todoList li {
+  padding: 15px 30px 15px 10px;
+  margin: 0;
+  border-bottom: 1px dotted #8a6343;
+  font-size: 20px;
+  position: relative;
+}
+
+.todoList li:first-child {
+  border-top: 10px solid #8a6343;
+}
+
+.todoList li:last-child {
+  border-bottom: none;
+}
+
+.todoList .todoList-remove {
+  position: absolute;
+  right: 10px;
+  top: 16px;
+  color: #D13C38;
+  cursor: pointer;
+}
+
+.todoList .todoList-remove:hover {
+  opacity: 0.8;
+}
+
+.todoList .is-completed .todoList-text {
+  color: #CCC;
+  text-decoration: line-through;
+}
