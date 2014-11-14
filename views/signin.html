@@ -1,0 +1,21 @@
+<% extend 'layout' %>
+
+<% if @error : %>
+<p class="message">Invalid username or password.</p>
+<% end %>
+
+<form method="post" action="/signin" class="signinForm pure-form">
+  <div class="signinForm-row">
+    <label for="name">Username</label>
+    <input id="name" type="text" name="username" placeholder="user">
+  </div>
+
+  <div class="signinForm-row">
+    <label for="password">Password</label>
+    <input id="password" type="password" name="password" placeholder="pass">
+  </div>
+
+  <div class="signinForm-action pure-controls">
+    <button type="submit" class="pure-button pure-button-primary">Signin</button>
+  </div>
+</form>
