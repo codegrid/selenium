@@ -1,5 +1,4 @@
 var express = require('express');
-var serveStatic = require('serve-static');
 var bodyParser = require('body-parser');
 var session = require('cookie-session');
 var ect = require('ect');
@@ -22,7 +21,7 @@ app.engine('html', renderer.render);
 app.set('view engine', 'html');
 
 // load middleware
-app.use(serveStatic(__dirname + '/static'));
+app.use(express.static(__dirname + '/static'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(session({ secret: '[secret]' }));

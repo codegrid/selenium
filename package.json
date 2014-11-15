@@ -7,8 +7,7 @@
     "ect": "0.5.9",
     "express": "4.10.2",
     "jfs": "0.2.1",
-    "nedb": "^0.11.1",
-    "serve-static": "1.7.1"
+    "nedb": "0.11.1"
   },
   "scripts": {
     "start": "node app.js",
