@@ -34,7 +34,7 @@ app.use(session({ secret: '[secret]' }));
  * ログインしていなければログインページにリダイレクトする。
  */
 app.get('/', function(req, res) {
-  if (!req.session.user) return res.redirect('/signin');
+  if (!req.session.user) return res.redirect('/login');
 
   res.render('index', { user: req.session.user });
 });
@@ -42,15 +42,15 @@ app.get('/', function(req, res) {
 /**
  * ログインページを描画
  */
-app.get('/signin', function(req, res) {
-  res.render('signin');
+app.get('/login', function(req, res) {
+  res.render('login');
 });
 
 /**
  * ログイン情報を受け取ってOKならセッションに記録してトップページへ。
  * ログイン情報が間違っていたらログイン画面にエラーを表示。
  */
-app.post('/signin', function(req, res) {
+app.post('/login', function(req, res) {
   var username = req.body.username;
   var password = req.body.password;
 
@@ -59,7 +59,7 @@ app.post('/signin', function(req, res) {
     res.redirect('/');
   }
   else {
-    res.render('signin', { error : true });
+    res.render('login', { error : true });
   }
 });
 
@@ -68,7 +68,7 @@ app.post('/signin', function(req, res) {
  */
 app.get('/signout', function(req, res) {
   req.session = null;
-  res.redirect('/signin');
+  res.redirect('/login');
 });
 
 /**

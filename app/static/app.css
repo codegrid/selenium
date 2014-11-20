@@ -45,20 +45,20 @@ body {
   margin: 30px auto 0;
 }
 
-.signinForm-row {
+.loginForm-row {
   margin: 15px 0;
 }
 
-.signinForm-row label {
+.loginForm-row label {
   display: inline-block;
   width: 5.2em;
 }
 
-.signinForm-row input {
+.loginForm-row input {
   width: 360px;
 }
 
-.signinForm-action {
+.loginForm-action {
   margin-top: 30px;
 }
 

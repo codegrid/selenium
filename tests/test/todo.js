@@ -17,10 +17,10 @@ t.describe('Todoアプリケーション', function() {
     driver = new firefox.Driver();
     driver.manage().timeouts().implicitlyWait(5000);
 
-    driver.get('http://localhost:4000/signin');
+    driver.get('http://localhost:4000/login');
     find('input[name="username"]').sendKeys('user');
     find('input[name="password"]').sendKeys('pass');
-    find('.signinForm').submit();
+    find('.loginForm').submit();
   });
 
   t.after(function() {

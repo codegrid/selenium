@@ -4,18 +4,18 @@
 <p class="message">Invalid username or password.</p>
 <% end %>
 
-<form method="post" action="/signin" class="signinForm pure-form">
-  <div class="signinForm-row">
+<form method="post" action="/login" class="loginForm pure-form">
+  <div class="loginForm-row">
     <label for="name">Username</label>
     <input id="name" type="text" name="username" placeholder="user">
   </div>
 
-  <div class="signinForm-row">
+  <div class="loginForm-row">
     <label for="password">Password</label>
     <input id="password" type="password" name="password" placeholder="pass">
   </div>
 
-  <div class="signinForm-action pure-controls">
-    <button type="submit" class="pure-button pure-button-primary">Signin</button>
+  <div class="loginForm-action pure-controls">
+    <button type="submit" class="pure-button pure-button-primary">login</button>
   </div>
 </form>
