@@ -13,5 +13,14 @@ t.describe('ログインページ', function() {
     driver.quit();
   });
 
-  t.it('dummy', function() {});
+  t.it('トップにアクセスすると/loginにリダイレクトする', function() {
+    // トップページにアクセスする
+    driver.get('http://localhost:4000/');
+
+    // 現在のURLを取得する
+    driver.getCurrentUrl().then(function(url) {
+      // ログインページにリダイレクトされているかを検証する
+      expect(url).to.be('http://localhost:4000/login');
+    });
+  });
 });
