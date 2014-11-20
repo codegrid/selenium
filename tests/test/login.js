@@ -39,4 +39,18 @@ t.describe('ログインページ', function() {
       expect(text).to.be('Invalid username or password.');
     });
   });
+
+  t.it('username/passwordが正しい場合はトップに遷移する', function() {
+    driver.get('http://localhost:4000/login');
+
+    // 入力フォームに正しい情報を入力して送信
+    driver.findElement(By.name('username')).sendKeys('user');
+    driver.findElement(By.name('password')).sendKeys('pass');
+    driver.findElement(By.css('.loginForm')).submit();
+
+    // トップページに遷移したかどうかを検証
+    driver.getCurrentUrl().then(function(url) {
+      expect(url).to.be('http://localhost:4000/');
+    });
+  });
 });
