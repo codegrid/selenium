@@ -4,12 +4,13 @@ var session = require('cookie-session');
 var ect = require('ect');
 var Datastore = require('nedb');
 var app = express();
+var env = process.env.NODE_ENV || 'development';
 
 var USERNAME = 'user';
 var PASSWORD = 'pass';
 
 // init DB
-var db = new Datastore({ filename: 'data/todo.db', autoload: true });
+var db = new Datastore();
 
 // set template engine
 var renderer = ect({
@@ -100,7 +101,7 @@ app.post('/todo', function(req, res, next) {
   db.insert(doc, function(err, todo) {
     if (err) return next(err);
 
-    res.json(todo);
+    setTimeout(function() { res.json(todo); }, 500);
   });
 });
 
@@ -132,7 +133,6 @@ app.delete('/todo/:id', function(req, res) {
   });
 });
 
-// run server
-app.listen(4000, function() {
+app.listen(process.env.PORT || 4000, function() {
   console.log('Example app listening at http://localhost:%d', this.address().port);
 });

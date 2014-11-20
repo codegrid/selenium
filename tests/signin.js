@@ -1,15 +1,14 @@
 var webdriver = require('selenium-webdriver');
-var By = webdriver.By;
 var firefox = require('selenium-webdriver/firefox');
 var expect = require('expect.js');
 var t = require('selenium-webdriver/testing');
 var driver;
 
 function find(selector) {
-  return driver.findElement(By.css(selector));
+  return driver.findElement(webdriver.By.css(selector));
 }
 
-t.describe('ログイン', function() {
+t.describe('ログインページ', function() {
   t.before(function() {
     driver = new firefox.Driver();
   });
