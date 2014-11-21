@@ -133,6 +133,14 @@ app.delete('/todo/:id', function(req, res) {
   });
 });
 
+/**
+ * Todoのデータを初期化してトップにリダイレクト（テスト用）
+ */
+app.get('/todo/clear', function(req, res) {
+  db.loadDatabase();
+  res.redirect('/');
+});
+
 app.listen(process.env.PORT || 4000, function() {
   console.log('Example app listening at http://localhost:%d', this.address().port);
 });
