@@ -42,6 +42,11 @@ t.describe('Todoページ', function() {
 
     // Todoが登録されているか確認
     var list = driver.findElement(By.css('.todoList'));
+    driver.wait(function() {
+      return list.findElements(By.css('li')).then(function(items) {
+        return items.length === 2;
+      });
+    });
     list.findElement(By.css('li:first-child .todoList-text'))
       .getText().then(function(text) {
         expect(text).to.be(secondTodo);
@@ -79,7 +84,7 @@ t.describe('Todoページ', function() {
     });
   });
 
-  t.it.only('Todoを削除する', function() {
+  t.it('Todoを削除する', function() {
     // Todoページに遷移
     driver.get('http://localhost:4000/');
 
