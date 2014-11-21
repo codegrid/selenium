@@ -66,7 +66,7 @@ app.post('/login', function(req, res) {
 /**
  * ログアウト。セッションを破棄してログインページにリダイレクト。
  */
-app.get('/signout', function(req, res) {
+app.get('/logout', function(req, res) {
   req.session = null;
   res.redirect('/login');
 });

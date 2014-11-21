@@ -24,18 +24,18 @@ body {
   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
 }
 
-.header-signout {
+.header-logout {
   position: absolute;
   right: 0;
   top: 10px;
   color: #FFF;
 }
 
-.header-signout a {
+.header-logout a {
   color: #FFF;
 }
 
-.header-signout a:hover {
+.header-logout a:hover {
   color: #C00;
 }
 
