@@ -45,4 +45,26 @@ t.describe('Todoページ', function() {
       expect(text).to.be(todoText);
     });
   });
+
+  t.it('Todoを削除する', function() {
+    // Todoを作成
+    var form = driver.findElement(By.css('.createTodoForm'));
+    var input = form.findElement(By.name('text'));
+    input.sendKeys('first todo');
+    form.submit();
+
+    // 削除ボタンをクリック
+    var item = driver.findElement(By.css('.todoList li:first-child'));
+    var removeBtn = item.findElement(By.css('.todoList-remove'));
+    removeBtn.click();
+
+    // confirmダイアログでOKを押す
+    driver.switchTo().alert().accept();
+
+    // 要素が消えたかどうかを確認する
+    var itemLocator = By.css('.todoList li:first-child');
+    driver.isElementPresent(itemLocator).then(function(isPresent) {
+      expect(isPresent).to.be(false);
+    });
+  });
 });
