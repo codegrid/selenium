@@ -129,7 +129,7 @@ app.delete('/todo/:id', function(req, res) {
   db.remove({ _id: req.params.id }, function(err) {
     if (err) return next(err);
 
-    res.sendStatus(204);
+    setTimeout(function() { res.sendStatus(204); }, 500);
   });
 });
 
