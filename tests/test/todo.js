@@ -61,10 +61,13 @@ t.describe('Todoページ', function() {
     // confirmダイアログでOKを押す
     driver.switchTo().alert().accept();
 
-    // 要素が消えたかどうかを確認する
+    // 要素が消えるまで待つ
+    driver.manage().timeouts().implicitlyWait(0);
     var itemLocator = By.css('.todoList li:first-child');
-    driver.isElementPresent(itemLocator).then(function(isPresent) {
-      expect(isPresent).to.be(false);
-    });
+    driver.wait(function() {
+      return driver.isElementPresent(itemLocator).then(function(isPresent) {
+        return isPresent === false;
+      });
+    }, 3000);
   });
 });
