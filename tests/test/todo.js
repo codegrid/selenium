@@ -25,7 +25,24 @@ t.describe('Todoページ', function() {
   t.beforeEach(function() {
     // データを初期化する
     driver.get('http://localhost:4000/todo/clear');
+
+    // implicitly waitを3000msに指定
+    driver.manage().timeouts().implicitlyWait(3000);
   });
 
-  t.it('dummy', function() {});
+  t.it('Todoを追加する', function() {
+    var todoText = 'sample todo';
+
+    // Todoを作成
+    var form = driver.findElement(By.css('.createTodoForm'));
+    var input = form.findElement(By.name('text'));
+    input.sendKeys(todoText);
+    form.submit();
+
+    // Todoが作成されたことを確認
+    var itemText = driver.findElement(By.css('.todoList li:first-child .todoList-text'));
+    itemText.getText().then(function(text) {
+      expect(text).to.be(todoText);
+    });
+  });
 });
