@@ -5,6 +5,7 @@ var todoInputLocator = By.css('.createTodoForm input[type="text"]');
 var todoFormLocator = By.css('.createTodoForm');
 var itemsLocator = By.css('.todoList li');
 var textLocator = By.css('.todoList-text');
+var removeBtnLocator = By.css('.todoList-remove');
 
 function TodoPage(driver) {
   this.driver = driver;
@@ -28,7 +29,21 @@ TodoPage.prototype.createTodo = function(text) {
   return this;
 };
 
-TodoPage.prototype.waitItemLength = function(len) {
+TodoPage.prototype.getTodoText = function(index) {
+  return this.driver.findElements(itemsLocator).then(function(elements) {
+    return elements[index].findElement(textLocator).getText();
+  });
+};
+
+TodoPage.prototype.removeTodo = function(index) {
+  this.driver.findElements(itemsLocator).then(function(elements) {
+    return elements[index].findElement(removeBtnLocator).click();
+  });
+
+  return this;
+};
+
+TodoPage.prototype.waitForItemLength = function(len) {
   this.driver.wait(function() {
     return this.driver.findElements(itemsLocator).then(function(items) {
       return items.length === len;
@@ -38,10 +53,8 @@ TodoPage.prototype.waitItemLength = function(len) {
   return this;
 };
 
-TodoPage.prototype.getTodoItemText = function(index, fn) {
-  this.driver.findElements(itemsLocator).then(function(elements) {
-    return elements[index].findElement(textLocator).getText();
-  });
+TodoPage.prototype.acceptConfirm = function() {
+  this.driver.switchTo().alert().accept();
 
   return this;
 };

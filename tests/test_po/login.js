@@ -29,9 +29,7 @@ t.describe('ログインページ', function() {
     
     loginPage
       .open()
-      .typeUsername('foo')
-      .typePassword('bar')
-      .submitLoginExpectingFailure()
+      .loginWithInvalidUser('foo', 'bar')
       .getErrorMessage().then(function(text) {
         expect(text).to.be('Invalid username or password.');
       });
@@ -40,10 +38,7 @@ t.describe('ログインページ', function() {
   t.it('username/passwordが正しい場合はトップに遷移する', function() {
     var loginPage = new LoginPage(driver);
 
-    loginPage
-      .typeUsername('user')
-      .typePassword('pass')
-      .submitLogin();
+    loginPage.login('user', 'pass');
 
     driver.getCurrentUrl().then(function(url) {
       expect(url).to.be(TodoPage.URL);

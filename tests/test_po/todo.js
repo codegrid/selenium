@@ -12,11 +12,7 @@ t.describe('Todoページ', function() {
     driver.manage().timeouts().implicitlyWait(5000);
 
     var loginPage = new LoginPage(driver);
-    loginPage
-      .open()
-      .typeUsername('user')
-      .typePassword('pass')
-      .submitLogin();
+    loginPage.open().login('user', 'pass');
   });
 
   t.after(function() {
@@ -30,19 +26,27 @@ t.describe('Todoページ', function() {
 
   t.it('Todoを追加する', function() {
     var todoPage = new TodoPage(driver);
-    var firstTodo = 'first todo';
-    var secondTodo  = 'second todo';
+    var todoText = 'sample todo';
 
     todoPage
       .open()
-      .createTodo(firstTodo)
-      .createTodo(secondTodo)
-      .waitItemLength(2)
-      .getTodoItemText(0, function(text) {
-        expect(text).to.be(firstTodo);
-      })
-      .getTodoItemText(1, function(text) {
-        expect(text).to.be(secondTodo);
+      .createTodo(todoText)
+      .getTodoText(0).then(function(text) {
+        expect(text).to.be(todoText);
       });
+  });
+
+  t.it('Todoを削除する', function() {
+    var todoPage = new TodoPage(driver);
+    var todoText = 'sample todo';
+
+    todoPage
+      .open()
+      .createTodo(todoText)
+      .removeTodo(0)
+      .acceptConfirm();
+
+    driver.manage().timeouts().implicitlyWait(0);
+    todoPage.waitForItemLength(0);
   });
 });

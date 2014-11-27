@@ -1,5 +1,4 @@
-var webdriver = require('selenium-webdriver');
-var By = webdriver.By;
+var By = require('selenium-webdriver').By;
 var TodoPage = require('./todo');
 
 var usernameLocator = By.name('username');
@@ -18,23 +17,21 @@ LoginPage.prototype.open = function() {
   return this;
 };
 
-LoginPage.prototype.typeUsername = function(username) {
+LoginPage.prototype._login = function(username, password) {
   this.driver.findElement(usernameLocator).sendKeys(username);
-  return this;
-};
-
-LoginPage.prototype.typePassword = function(password) {
   this.driver.findElement(passwordLocator).sendKeys(password);
-  return this;
+  this.driver.findElement(formLocator).submit();
 };
 
-LoginPage.prototype.submitLogin = function() {
-  this.driver.findElement(formLocator).submit();
-  return new TodoPage(this.driver);
+LoginPage.prototype.login = function(username, password) {
+  this._login(username, password);
+
+  return new TodoPage();
 };
 
-LoginPage.prototype.submitLoginExpectingFailure = function() {
-  this.driver.findElement(formLocator).submit();
+LoginPage.prototype.loginWithInvalidUser = function(username, password) {
+  this._login(username, password);
+
   return this;
 };
 
